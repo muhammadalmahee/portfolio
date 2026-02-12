@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammad MH | Wordpress Developer</title>
+    <link rel="icon" type="image/gif" href="logo.png">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;400;500;600;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-dark: #020617;
+            --bg-card: rgba(30, 41, 59, 0.4);
+            --primary: #0ea5e9;
+            --secondary: #6366f1;
+            --accent: #2dd4bf;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            background-image: radial-gradient(circle at 50% 0%, #1e293b 0%, var(--bg-dark) 70%);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden; /* Prevents horizontal scroll on mobile */
+        }
+
+        h1, h2, h3, h4, h5, h6 { color: var(--text-main) !important; letter-spacing: -0.02em; }
+        p, .lead { color: var(--text-muted) !important; line-height: 1.7; }
+        
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg-dark); }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+
+        /* --- NAVBAR STYLING --- */
+        .navbar {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            background: rgba(2, 6, 23, 0.85);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 15px 0;
+            transition: all 0.3s;
+        }
+        
+        .navbar-brand {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            letter-spacing: -1px;
+            font-size: 1.5rem;
+            color: white !important;
+        }
+
+        .nav-link {
+            color: #cbd5e1 !important;
+            font-size: 0.9rem;
+            font-weight: 500;
+            padding: 8px 16px !important;
+            border-radius: 6px;
+            transition: 0.3s;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            color: #fff !important;
+            background: rgba(255,255,255,0.08);
+        }
+
+        /* --- BUTTONS --- */
+        .btn-glow {
+            background: linear-gradient(90deg, var(--secondary), var(--primary), var(--accent));
+            background-size: 300% 100%;
+            border: none;
+            color: white !important;
+            padding: 14px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
+            transition: all 0.4s ease;
+            animation: gradientMove 4s infinite alternate;
+        }
+        
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        .btn-glow:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(14, 165, 233, 0.5);
+        }
+
+        .btn-outline-custom {
+            border: 1px solid rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.05);
+            color: white;
+            border-radius: 50px;
+            padding: 13px 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .btn-outline-custom:hover {
+            background: white;
+            color: var(--bg-dark);
+            border-color: white;
+            transform: translateY(-2px);
+        }
+
+        /* --- MOBILE RESPONSIVE FIXES (THE MAIN PART) --- */
+        @media (max-width: 991px) {
+            /* Navbar Mobile Dropdown */
+            .navbar-collapse {
+                background: rgba(15, 23, 42, 0.98); /* Solid dark background */
+                border: 1px solid rgba(255,255,255,0.1);
+                box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+                border-radius: 12px;
+                margin-top: 15px;
+                padding: 20px;
+                text-align: center;
+            }
+            .nav-item { margin-bottom: 8px; }
+            
+            /* Hero Section Mobile */
+            .hero-section {
+                text-align: center;
+                padding-top: 130px; /* More space for navbar */
+                padding-bottom: 60px;
+                height: auto; /* Allow auto height */
+                min-height: auto;
+            }
+            .hero-title { 
+                font-size: 2.8rem !important; 
+                line-height: 1.2;
+            }
+            .hero-subtitle {
+                font-size: 0.85rem;
+                margin-bottom: 15px;
+            }
+            .lead {
+                font-size: 1rem;
+                margin-bottom: 30px !important;
+            }
+            
+            /* Buttons on Mobile (Stacked & Full Width) */
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+                gap: 15px !important;
+            }
+            .hero-buttons .btn {
+                width: 100%; /* Full width buttons */
+                padding: 16px; /* Larger touch target */
+                font-size: 1.1rem;
+            }
+            
+            /* Navbar Button in Menu */
+            .navbar .btn-glow {
+                width: 100%;
+                margin-top: 15px;
+            }
+
+            /* Hide Code Window on Mobile to save space */
+            .code-window { display: none !important; }
+            
+            /* Timeline & Cards */
+            .timeline { padding-left: 20px; border-left: 2px solid rgba(255,255,255,0.1); }
+            .timeline-item::before { left: -29px; }
+            
+            /* Tech Cards Grid Fix */
+            .tech-card { margin-bottom: 15px; }
+            
+            /* Project Cards */
+            .project-card { margin-bottom: 20px; }
+            
+            /* Section Titles */
+            .section-title { font-size: 2.2rem; }
+            .section-header { margin-bottom: 40px; }
+        }
+
+        /* Hero Section */
+        .hero-section {
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+        }
+        #particles-js { position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 0; }
+        .hero-content { z-index: 1; position: relative; }
+        
+        .hero-subtitle {
+            color: var(--accent);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            font-weight: 600;
+            background: rgba(45, 212, 191, 0.1);
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 20px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(45, 212, 191, 0.2);
+        }
+        
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -2px;
+            background: linear-gradient(to right, #ffffff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .typing-text { 
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+        }
+
+        /* Code Window */
+        .code-window {
+            background: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 12px;
+            padding: 0;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+            transform: perspective(1000px) rotateY(-10deg) rotateX(5deg);
+            transition: transform 0.5s;
+            overflow: hidden;
+        }
+        .code-header {
+            background: #1e293b; padding: 10px 15px; border-bottom: 1px solid #334155; display: flex; gap: 8px;
+        }
+        .code-body { padding: 20px; }
+        .code-window:hover { 
+            transform: perspective(1000px) rotateY(0deg) rotateX(0deg); 
+            box-shadow: 0 35px 60px -15px rgba(0,0,0,0.6);
+        }
+        .code-key { color: #f472b6; }
+        .code-func { color: #60a5fa; }
+        .code-str { color: #a3e635; }
+        .code-comment { color: #64748b; font-style: italic; }
+
+        /* Sections */
+        .section-header { margin-bottom: 60px; }
+        .section-tag {
+            color: var(--primary);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .section-title { font-size: 2.5rem; font-weight: 800; color: white; }
+
+        /* Cards */
+        .tech-card, .project-card {
+            background: rgba(30, 41, 59, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 30px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        .tech-card:hover, .project-card:hover {
+            background: rgba(30, 41, 59, 0.6);
+            border-color: rgba(56, 189, 248, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px -10px rgba(14, 165, 233, 0.2);
+        }
+        .tech-card h5, .tech-card h6 { color: white !important; font-weight: 600; }
+        
+        .tech-card.small-card {
+            padding: 25px 15px !important;
+            min-height: 130px;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+        }
+        .tech-icon { font-size: 2.5rem; margin-bottom: 15px; color: var(--text-muted); transition: 0.3s; }
+        .tech-card:hover .tech-icon { color: var(--primary); transform: scale(1.1); filter: drop-shadow(0 0 10px rgba(14, 165, 233, 0.4)); }
+
+        .project-img-holder {
+            height: 220px; background: linear-gradient(to bottom, #1e293b, #0f172a); 
+            border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 25px;
+            overflow: hidden; position: relative; border: 1px solid rgba(255,255,255,0.05);
+        }
+        .project-overlay {
+            position: absolute; inset: 0; background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(5px);
+            display: flex; align-items: center; justify-content: center; gap: 15px; opacity: 0; transition: 0.3s;
+        }
+        .project-card:hover .project-overlay { opacity: 1; }
+
+        /* Timeline */
+        .timeline { border-left: 2px solid rgba(255,255,255,0.05); padding-left: 30px; }
+        .timeline-item { margin-bottom: 50px; }
+        .timeline-item::before {
+            content: ''; position: absolute; left: -37px; top: 6px; width: 16px; height: 16px;
+            background: var(--bg-dark); border: 2px solid var(--primary); border-radius: 50%;
+            box-shadow: 0 0 15px rgba(14, 165, 233, 0.3);
+        }
+        .timeline-date { 
+            font-family: 'JetBrains Mono', monospace; color: var(--primary); font-size: 0.85rem; 
+            background: rgba(14, 165, 233, 0.1); padding: 4px 10px; border-radius: 4px;
+        }
+
+        /* Form */
+        .glass-form {
+            background: rgba(30, 41, 59, 0.4); border: 1px solid rgba(255,255,255,0.08);
+            padding: 40px; border-radius: 24px; box-shadow: 0 20px 50px rgba(0,0,0,0.3); backdrop-filter: blur(20px);
+        }
+        @media (max-width: 768px) {
+            .glass-form { padding: 25px; } /* Smaller padding on mobile */
+        }
+        .form-control {
+            background: rgba(15, 23, 42, 0.6) !important; border: 1px solid rgba(255,255,255,0.1) !important;
+            color: #ffffff !important; padding: 16px; border-radius: 12px; font-size: 1rem; transition: all 0.3s;
+        }
+        .form-control:focus {
+            background: rgba(15, 23, 42, 0.8) !important; border-color: var(--primary) !important;
+            box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.1);
+        }
+        .form-control::placeholder { color: rgba(148, 163, 184, 0.6) !important; }
+        
+        /* Autofill Fix */
+        input:-webkit-autofill, textarea:-webkit-autofill {
+            -webkit-text-fill-color: #ffffff; -webkit-box-shadow: 0 0 0px 1000px #0f172a inset;
+            transition: background-color 5000s ease-in-out 0s;
+        }
+
+        footer { border-top: 1px solid rgba(255,255,255,0.05); padding: 60px 0; text-align: center; background: #020617; }
+        .social-link {
+            width: 45px; height: 45px; display: inline-flex; align-items: center; justify-content: center;
+            border-radius: 50%; background: rgba(255,255,255,0.05); color: white; margin: 0 8px;
+            transition: 0.3s; border: 1px solid rgba(255,255,255,0.05);
+        }
+        .social-link:hover {
+            background: var(--primary); color: white; transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(14, 165, 233, 0.4); border-color: var(--primary);
+        }
+        .badge { 
+            background: rgba(14, 165, 233, 0.1); border: 1px solid rgba(14, 165, 233, 0.2); 
+            color: #e0f2fe !important; font-weight: 500; padding: 8px 14px; letter-spacing: 0.5px;
+        }
+    </style>
+</head>
+<body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="100">
+
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#" id="brand-logo">
+                &lt;Muhammad <span style="color:var(--primary)">Mh</span> /&gt;
+            </a>
+            <button class="navbar-toggler navbar-dark shadow-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Stack</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Work</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+                    <li class="nav-item ms-lg-3 w-100 w-lg-auto">
+                        <a href="#contact" class="btn btn-glow">Let's Talk</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero-section">
+        <div id="particles-js"></div>
+        <div class="container hero-content">
+            <div class="row align-items-center">
+                <div class="col-lg-7" data-aos="fade-right">
+                    <p class="hero-subtitle">Hello, I am Muhammad MH</p>
+                    <h1 class="hero-title mb-4">Architecting <br>Scalable <span class="typing-text">Backends</span></h1>
+                    
+                    <p class="lead mb-5" style="max-width: 600px; font-weight: 300;">
+                        I specialize in building secure APIs, web applications, and <strong class="text-white fw-bold">custom WordPress solutions</strong> using <strong class="text-white fw-bold">PHP, Laravel & MySQL</strong>. Turning complex logic into clean code.
+                    </p>
+                    
+                    <div class="d-flex gap-3 hero-buttons">
+                        <a href="mh-resume.pdf" class="btn btn-glow" download target="_blank">Download Resume <i class="fas fa-download ms-2"></i></a>
+                        
+                        <a href="https://github.com/muhammadalmahee" target="_blank" class="btn btn-outline-custom">
+                            <i class="fab fa-github me-2"></i> GitHub
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-5 d-none d-lg-block" data-aos="fade-left" data-aos-delay="200">
+                    <div class="code-window">
+                        <div class="code-header">
+                            <div style="width:12px;height:12px;border-radius:50%;background:#ff5f56"></div>
+                            <div style="width:12px;height:12px;border-radius:50%;background:#ffbd2e"></div>
+                            <div style="width:12px;height:12px;border-radius:50%;background:#27c93f"></div>
+                        </div>
+                        <div class="code-body">
+                        <pre>
+<span class="code-key">class</span> <span class="code-func">Developer</span> {
+  <span class="code-key">public</span> $name = <span class="code-str">"MH Mahee"</span>;
+  <span class="code-key">public</span> $stack = [
+    <span class="code-str">"PHP 8.2"</span>,
+    <span class="code-str">"Laravel 10"</span>,
+    <span class="code-str">"MySQL"</span>
+  ];
+
+  <span class="code-key">public function</span> <span class="code-func">build</span>() {
+    <span class="code-comment">// Deploying scalable solutions</span>
+    <span class="code-key">return</span> <span class="code-str">"High Performance"</span>;
+  }
+}</pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="py-5">
+        <div class="container py-5">
+            <div class="section-header text-center mb-5" data-aos="fade-up">
+                <span class="section-tag">MY ARSENAL</span>
+                <h2 class="section-title">Technologies</h2>
+            </div>
+            
+            <div class="row g-3 row-cols-2 row-cols-md-3 justify-content-center">
+                <div class="col" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="tech-card small-card text-center" data-tilt>
+                        <i class="fab fa-laravel tech-icon text-danger"></i>
+                        <h6 class="fw-bold">Laravel</h6>
+                    </div>
+                </div>
+
+                <div class="col" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="tech-card small-card text-center" data-tilt>
+                        <i class="fab fa-php tech-icon text-primary"></i>
+                        <h6 class="fw-bold">PHP</h6>
+                    </div>
+                </div>
+
+                <div class="col" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="tech-card small-card text-center" data-tilt>
+                        <i class="fas fa-database tech-icon text-warning"></i>
+                        <h6 class="fw-bold">MySQL</h6>
+                    </div>
+                </div>
+
+                <div class="col" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="tech-card small-card text-center" data-tilt>
+                        <i class="fab fa-js tech-icon text-warning"></i>
+                        <h6 class="fw-bold">JS</h6>
+                    </div>
+                </div>
+
+                <div class="col" data-aos="zoom-in" data-aos-delay="500">
+                    <div class="tech-card small-card text-center" data-tilt>
+                        <i class="fab fa-bootstrap tech-icon" style="color: #7952b3;"></i>
+                        <h6 class="fw-bold">Bootstrap</h6>
+                    </div>
+                </div>
+
+                <div class="col" data-aos="zoom-in" data-aos-delay="600">
+                    <div class="tech-card small-card text-center" data-tilt>
+                        <i class="fab fa-wordpress tech-icon" style="color: #21759b;"></i>
+                        <h6 class="fw-bold">WordPress</h6>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    
+    <section id="projects" class="py-5">
+        <div class="container py-5">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag">PORTFOLIO</span>
+                <h2 class="section-title">Featured Projects</h2>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="project-card h-100" data-tilt>
+                        <div class="project-img-holder">
+                            <i class="fas fa-shopping-bag fa-3x text-secondary"></i>
+                            <div class="project-overlay">
+                                <a href="#" class="btn btn-light rounded-circle"><i class="fab fa-github"></i></a>
+                                <a href="#" class="btn btn-light rounded-circle"><i class="fas fa-link"></i></a>
+                            </div>
+                        </div>
+                        <h4 class="fw-bold mb-2">E-Commerce API</h4>
+                        <p class="small mb-3">Multi-vendor marketplace backend with Stripe payments, inventory management, and order tracking.</p>
+                        <div class="mt-auto">
+                            <span class="badge">Laravel</span>
+                            <span class="badge">REST API</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="project-card h-100" data-tilt>
+                        <div class="project-img-holder">
+                            <i class="fas fa-user-shield fa-3x text-secondary"></i>
+                            <div class="project-overlay">
+                                <a href="#" class="btn btn-light rounded-circle"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <h4 class="fw-bold mb-2">Auth System</h4>
+                        <p class="small mb-3">Advanced authentication system with Role-Based Access Control (RBAC) and OAuth integration.</p>
+                        <div class="mt-auto">
+                            <span class="badge">PHP</span>
+                            <span class="badge">Security</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="project-card h-100" data-tilt>
+                        <div class="project-img-holder">
+                            <i class="fab fa-wordpress fa-3x text-secondary"></i>
+                            <div class="project-overlay">
+                                <a href="#" class="btn btn-light rounded-circle"><i class="fab fa-github"></i></a>
+                                <a href="#" class="btn btn-light rounded-circle"><i class="fas fa-link"></i></a>
+                            </div>
+                        </div>
+                        <h4 class="fw-bold mb-2">Custom WP Theme</h4>
+                        <p class="small mb-3">High-performance custom WordPress theme development with advanced ACF integration and SEO optimization.</p>
+                        <div class="mt-auto">
+                            <span class="badge">WordPress</span>
+                            <span class="badge">PHP</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="py-5" style="background: rgba(255,255,255,0.02);">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="section-header text-center mb-5" data-aos="fade-up">
+                        <span class="section-tag">CAREER PATH</span>
+                        <h2 class="section-title">Work Experience</h2>
+                    </div>
+
+                    <div class="timeline">
+                        <div class="timeline-item" data-aos="fade-left">
+                            <span class="timeline-date">2023 - Present</span>
+                            <h4 class="fw-bold mt-2 text-white">Wordpress Developer</h4>
+                            <p class="text-primary mb-2 fw-semibold">Peer Solution</p>
+                            <p class="">Leading the backend team, architecting microservices, and optimizing database queries for high-traffic applications.</p>
+                        </div>
+
+                        <div class="timeline-item" data-aos="fade-left" data-aos-delay="100">
+                            <span class="timeline-date">2021 - 2023</span>
+                            <h4 class="fw-bold mt-2 text-white">Web Developer</h4>
+                            <p class="text-primary mb-2 fw-semibold">Digital IT Institute</p>
+                            <p class="">Developed custom WordPress plugins and PHP-based web applications for international clients.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-5">
+        <div class="container py-5">
+            <div class="row align-items-center">
+                <div class="col-lg-5 mb-5 mb-lg-0" data-aos="fade-right">
+                    <h2 class="display-4 fw-bold mb-4">Let's work <br><span class="text-primary">together.</span></h2>
+                    <p class="lead mb-4">Have a project in mind? I am available for freelance work and full-time opportunities.</p>
+                    
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="btn btn-outline-light rounded-circle me-3" style="width:50px;height:50px;display:flex;align-items:center;justify-content:center; border-color:rgba(255,255,255,0.1)"><i class="fas fa-envelope"></i></div>
+                        <div>
+                            <small class="text-muted d-block">Email me at</small>
+                            <span class="fw-bold text-white">info@mhtech.zone</span>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <div class="btn btn-outline-light rounded-circle me-3" style="width:50px;height:50px;display:flex;align-items:center;justify-content:center; border-color:rgba(255,255,255,0.1)"><i class="fas fa-phone"></i></div>
+                        <div>
+                            <small class="text-muted d-block">Call me at</small>
+                            <span class="fw-bold text-white">+880 1886208226</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-7" data-aos="fade-left">
+                    <form action="https://formsubmit.co/mhtechzone.com@gmail.com" method="POST" class="glass-form">
+                        
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_subject" value="New Submission from Portfolio">
+
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="email" name="email" class="form-control" placeholder="Your Email" required>
+                            </div>
+                            <div class="col-12">
+                                <input type="text" name="subject" class="form-control" placeholder="Subject" required>
+                            </div>
+                            <div class="col-12">
+                                <textarea name="message" class="form-control" rows="5" placeholder="Tell me about your project..." required></textarea>
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-glow w-100 py-3">Send Message <i class="fas fa-paper-plane ms-2"></i></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="mb-4">
+                <a href="https://github.com/muhammadalmahee" class="social-link" target="_blank"><i class="fab fa-github fa-lg"></i></a>
+                <a href="https://linkedin.com/in/muhammad-mhmahee" class="social-link" target="_blank"><i class="fab fa-linkedin fa-lg"></i></a>
+                <a href="https://www.instagram.com/muhammadalmahee" class="social-link" target="_blank"><i class="fab fa-instagram fa-lg"></i></a>
+            </div>
+            <p class="mb-0 small text-white-50">&copy; 2026 Muhammad MH. Built with Wordpress & Php-Laravel.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    
+    <script>
+        // Init Animations
+        AOS.init({ duration: 1000, once: true });
+
+        // Init Tilt Effect
+        VanillaTilt.init(document.querySelectorAll("[data-tilt]"), {
+            max: 10,
+            speed: 400,
+            glare: true,
+            "max-glare": 0.1
+        });
+
+        // Typing Effect
+        const textElement = document.querySelector('.typing-text');
+        const phrases = ["Backends", "APIs", "WordPress", "Databases", "Systems"];
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+
+        function type() {
+            const currentPhrase = phrases[phraseIndex];
+            if (isDeleting) {
+                textElement.textContent = currentPhrase.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                textElement.textContent = currentPhrase.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            if (!isDeleting && charIndex === currentPhrase.length) {
+                isDeleting = true;
+                setTimeout(type, 2000);
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+                setTimeout(type, 500);
+            } else {
+                setTimeout(type, isDeleting ? 100 : 200);
+            }
+        }
+        type();
+
+        // Navbar Brand Toggler
+        const navbarBrand = document.getElementById('brand-logo');
+        const brandNames = [
+            '&lt;MH <span style="color:var(--primary)">Mahee</span> /&gt;',
+            '&lt;MH <span style="color:var(--primary)">Tech Zone</span> /&gt;'
+        ];
+        let brandStep = 0;
+
+        setInterval(() => {
+            brandStep = (brandStep + 1) % brandNames.length;
+            navbarBrand.style.opacity = 0; // Fade out
+            setTimeout(() => {
+                navbarBrand.innerHTML = brandNames[brandStep];
+                navbarBrand.style.opacity = 1; // Fade in
+            }, 500); // Wait for fade out
+        }, 4000); // Change every 4 seconds
+
+        // Particles.js Config
+        particlesJS("particles-js", {
+            "particles": {
+                "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": "#38bdf8" },
+                "opacity": { "value": 0.5 },
+                "size": { "value": 3 },
+                "line_linked": { "enable": true, "distance": 150, "color": "#38bdf8", "opacity": 0.2, "width": 1 },
+                "move": { "enable": true, "speed": 2 }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": { "onhover": { "enable": true, "mode": "grab" } }
+            },
+            "retina_detect": true
+        });
+    </script>
+</body>
+</html>
